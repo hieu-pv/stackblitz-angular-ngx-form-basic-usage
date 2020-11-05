@@ -1,6 +1,6 @@
 import { Component, ViewChild } from "@angular/core";
 import { Validators } from "@angular/forms";
-import { NgxFormAnchorDirective, NgxFormGroup } from "@ngxform/platform";
+import { NgxFormGroup } from "@ngxform/platform";
 import {
   NgxCheckboxFormControl,
   NgxRadioFormControl,
@@ -14,13 +14,13 @@ import {
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  public profileForm: NgxFormGroup;
+  public demoForm: NgxFormGroup;
   ngOnInit(): void {
     const radioOptions = [
       { key: "Option 1", value: 1 },
       { key: "Option 2", value: 2 }
     ];
-    this.profileForm = new NgxFormGroup({
+    this.demoForm = new NgxFormGroup({
       textbox: new NgxTextboxFormControl(
         "",
         [Validators.required, Validators.email, Validators.minLength(3)],
@@ -74,9 +74,7 @@ export class AppComponent {
   }
 
   onSubmit(): void {
-    this.profileForm.submitted = true;
-    console.log(this.profileForm.value);
+    this.demoForm.submitted = true;
+    console.log(this.demoForm.value);
   }
-
-  
 }
