@@ -15,8 +15,6 @@ import {
 })
 export class AppComponent {
   public profileForm: NgxFormGroup;
-  @ViewChild(NgxFormAnchorDirective, { static: false })
-  ngxFormAnchorDirective: NgxFormAnchorDirective;
   ngOnInit(): void {
     const radioOptions = [
       { key: "Option 1", value: 1 },
@@ -80,38 +78,5 @@ export class AppComponent {
     console.log(this.profileForm.value);
   }
 
-  addField() {
-    const makeid = length => {
-      var result = "";
-      var characters =
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-      var charactersLength = characters.length;
-      for (var i = 0; i < length; i++) {
-        result += characters.charAt(
-          Math.floor(Math.random() * charactersLength)
-        );
-      }
-      return result;
-    };
-    const controlName = makeid(10);
-    this.profileForm.registerControl(
-      controlName,
-      new NgxTextboxFormControl(
-        "",
-        [Validators.required, Validators.email, Validators.minLength(3)],
-        [],
-        {
-          label: controlName,
-          controlClass: ["form-control"],
-          ngClass: "d-flex flex-column form-group",
-          errorMessages: [
-            { key: "required", message: "This field is required" },
-            { key: "email", message: "Email is invalid" },
-            { key: "minlength", message: "Min length is 3" }
-          ]
-        }
-      )
-    );
-    this.ngxFormAnchorDirective.rerender();
-  }
+  
 }
